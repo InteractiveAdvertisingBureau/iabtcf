@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "plugins": [
+      { "name": "vue-ts-plugin" }
+    ],
     "target": "ES6",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -9,7 +12,7 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "preserveConstEnums": true,
-    "declaration": true,
+    "declaration": false,
     "allowUnreachableCode": false,
     "strict": true,
     "strictPropertyInitialization": false,

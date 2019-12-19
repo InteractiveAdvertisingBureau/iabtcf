@@ -2,31 +2,19 @@
   "name": "iabtcf",
   "description": "Official compliant tool suite for implementing the iab. Transparency and Consent Framework (TCF).",
   "private": true,
-  "workspaces": [
-    "modules/testing",
-    "modules/core",
-    "modules/cli",
-    "modules/cmpapi",
-    "modules/site",
-    "modules/stub"
-  ],
   "author": "Chris Paterson <tcf@chrispaterson.io>",
-  "homepage": "https://github.com/chrispaterson/iabtcf",
+  "homepage": "https://github.com/InteractiveAdvertisingBureau/iabtcf",
   "license": {
     "type": "Apache-2.0",
     "url": "https://opensource.org/licenses/apache2.0.php"
   },
   "scripts": {
-    "build": "yarn workspaces run build",
-    "docs": "yarn workspace @iabtcf/core run docs && yarn workspace @iabtcf/cmpapi run docs",
-    "clean": "rm -rf node_modules ./modules/**/node_modules ./modules/**/lib ./coverage ./modules/**/coverage",
-    "lint": "yarn workspaces run lint",
-    "test": "mocha",
-    "debug": "ndb mocha",
-    "serve:cov": "npx http-server ./coverage/",
-    "test:cov": "rm -rf coverage; nyc --reporter html mocha",
-    "test:lcov": "nyc --reporter=lcov mocha",
-    "upload:lcov": "cat coverage/lcov.info | coveralls"
+    "start": "webpack-dev-server",
+    "prepare": "yarn run build",
+    "build": "webpack",
+    "lint": "eslint `find src -type f ( -name '*.ts' -name '*.vue' )`",
+    "lint:fix": "yarn run lint -- --fix",
+    "test": "exit 0"
   },
   "keywords": [
     "interactive",
@@ -54,7 +42,45 @@
     "sdk",
     "gdpr"
   ],
+  "dependencies": {
+    "@iabtcf/core": "^1.0.0-beta.0",
+    "bootstrap-vue": "^2.1.0",
+    "core-js": "^2.6.5",
+    "jquery": "^3.4.0",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0",
+    "vue-router": "^3.1.3",
+    "vuejs-datepicker": "^1.6.2"
+  },
   "devDependencies": {
-    "mocha": "6"
+    "@types/webpack": "^4.41.0",
+    "@types/webpack-dev-server": "^3.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-plugin-eslint": "^3.12.0",
+    "@vue/cli-plugin-typescript": "^3.12.0",
+    "@vue/eslint-config-typescript": "^5.0.1",
+    "@vue/eslint-plugin": "^4.2.0",
+    "babel-eslint": "^10.0.1",
+    "css-loader": "^3.2.1",
+    "eslint": "^5",
+    "eslint-plugin-vue": "^5.0.0",
+    "fibers": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "lint-staged": "^8.1.5",
+    "mocha": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.0",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "vue-ts-plugin": "^0.1.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }

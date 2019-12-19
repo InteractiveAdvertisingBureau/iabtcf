@@ -1,4 +1,0 @@
-extends: "@istanbuljs/nyc-config-typescript"
-include:
-  - modules/core/src/*
-  - modules/cmpapi/src/*

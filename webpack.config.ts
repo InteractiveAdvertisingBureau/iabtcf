@@ -12,18 +12,11 @@ const config: WebpackConfig = {
   entry: './src/main.ts',
   output: {
     filename: `site.js`,
-    path: path.resolve(__dirname, '../../docs'),
+    path: path.resolve(__dirname, 'public'),
   },
   mode: 'production',
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        include: [/node_modules\/\@iabtcf\/core/],
-        use: {
-          loader: 'babel-loader',
-        },
-      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -45,7 +38,7 @@ const config: WebpackConfig = {
         test: /\.(s*)css$/, // match any .scss or .css file,
         include: [
           path.resolve(__dirname, './src/'),
-          path.resolve(__dirname, '../../node_modules/'),
+          path.resolve(__dirname, './node_modules/bootstrap/'),
         ],
         use: [
           "vue-style-loader",
@@ -92,7 +85,7 @@ if (isDevServer) {
   config.mode = 'development';
   config.devtool = 'eval-source-map';
   config.devServer = {
-    contentBase: '../../docs/',
+    contentBase: '',
     hot: true,
     open: 'chrome',
     overlay: true,
