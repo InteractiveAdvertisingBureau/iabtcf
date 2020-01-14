@@ -1,29 +1,23 @@
 <template>
-  <div>
-    <div
-      class="tcstring-input"
-      v-model="tcstringDecoded"
-      > 
-    </div>
       <div 
         class="decoded-output"
         v-html="tcstringDecoded" 
         >
     </div>
-  </div>
 </template>
 
 <script lang="ts">
 
-import {TCString, Vector, PurposeRestrictionVector, PurposeRestriction, GVL} from '@iabtcf/core';
+import {TCModel, TCString, Vector, PurposeRestrictionVector, PurposeRestriction, GVL} from '@iabtcf/core';
 import {Component, Prop} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
 
 @Component
-export default class extends FormComponent {
+export default class DecodeOutput extends FormComponent {
 
-  private tcstringDecoded_: string;
-  
+  @Prop()
+  private tcString: string; 
+
   private print(key: string | number, value: string | number | boolean | object | undefined, indent = 0): string {
 
     const indentString = '&nbsp;&nbsp;'.repeat(indent);
@@ -100,20 +94,25 @@ export default class extends FormComponent {
 
     return str;
 
-};
+  };
 
   private get tcstringDecoded(): string {
 
     let retr = '';
 
-    if(this.tcModel.cmpId) {
+    if(this.tcString) {
+      try {
 
-      retr = this.print('TCModel', this.tcModel);
+        this.tcModel = TCString.decode(this.tcString);
+        retr = this.print('', this.tcModel);
 
-    } else {
+      } catch(err) {
 
-      retr = 'Invalid TC String';
+        retr = err.toString();
+
+      }
     }
+
     return retr;
 
   }

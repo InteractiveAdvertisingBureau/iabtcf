@@ -14,29 +14,17 @@ GVL.baseUrl = document.location.origin;
 
   },
 })
-export default class extends Vue {
+export default class TCStringDecode extends Vue {
 
-  private tcModel: TCModel = new TCModel();
-  private tcString: string;
+  private tcString = '';
 
   private created(): void {
+
     if(document.location.hash.split('#')[2] !== undefined) {
 
-      this.decode(document.location.hash.split('#')[2]);
+      this.tcString = document.location.hash.split('#')[2];
 
     }  
   }
-
-  private decode(tcString: string) : void {
-
-    if(tcString) {
-
-      this.tcString = tcString;
-      this.tcModel = TCString.decode(tcString);
-
-    }
-
-  }
-
 
 }

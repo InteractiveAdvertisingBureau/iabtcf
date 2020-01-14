@@ -4,25 +4,23 @@
     >
     <b-form-input
       class="tcstring-input"
-      v-model="encodedTCString"
+      v-model="tcString"
       @click="selectContents"
-      @input="$emit('decode', encodedTCString)"
-      @update="update"
+      @input="$emit('update:tcString', tcString)"
     />
   </b-form-group>
 </template>
 
 <script lang="ts">
 
-import {TCString} from '@iabtcf/core';
 import {Component, Prop} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
 
 @Component
-export default class extends FormComponent {
+export default class DecodeInput extends FormComponent {
 
   @Prop()
-  private encodedTCString: string
+  private tcString: string
 
   private selectContents(e: MouseEvent): void {
 

@@ -26,13 +26,11 @@
                 id="created"
                 label="Created Date"
                 :tc-model="tcModel"
-                @update="update"
               />
               <date-field
                 id="lastUpdated"
                 label="Last Updated Date"
                 :tc-model="tcModel"
-                @update="update"
               />
               <text-field
                 v-for="formField in formFields"
@@ -40,28 +38,24 @@
                 :tc-model="tcModel"
                 :id="formField.value"
                 :key="formField.value"
-                @update="update"
               />
               <form-select
                 label="Vendor List Version"
                 :tc-model="tcModel"
                 :options="vendorListVersions"
                 id="vendorListVersion"
-                @update="onVendorListSet"
               />
               <form-select
                 label="Consent Language"
                 :tc-model="tcModel"
                 :options="languages"
                 id="consentLanguage"
-                @update="update"
               />
               <form-select
                 label="Pub Country Code"
                 :tc-model="tcModel"
                 :options="countries"
                 id="publisherCountryCode"
-                @update="update"
               />
               <br >
             </b-card>
@@ -77,14 +71,12 @@
                 :tc-model="tcModel"
                 :options="vendors"
                 id="vendorConsents"
-                @update="update"
               />
               <big-form-select
                 label="Vendor Legitimate Interest"
                 :tc-model="tcModel"
                 :options="vendors"
                 id="vendorLegitimateInterest"
-                @update="update"
               />
               <big-form-select
                 v-if="tcModel.isServiceSpecific"
@@ -92,7 +84,6 @@
                 :tc-model="tcModel"
                 :options="vendors"
                 id="vendorsAllowed"
-                @update="update"
               />
             </b-card>
           </b-col>
@@ -106,21 +97,18 @@
                 :tc-model="tcModel"
                 :options="purposes"
                 id="purposeConsents"
-                @update="update"
               />
               <big-form-select
                 label="Purpose Legitimate Interest"
                 :tc-model="tcModel"
                 :options="purposes"
-                id="purposeConsents"
-                @update="update"
+                id="purposeLegitimateInterest"
               />
               <big-form-select
                 label="Special Feature Optins"
                 :tc-model="tcModel"
                 :options="specialFeatures"
                 id="specialFeatureOptIns"
-                @update="update"
               />
             </b-card>
           </b-col>
@@ -135,7 +123,6 @@
                 :label="field.text"
                 :tc-model="tcModel"
                 :key="field.value"
-                @update="update"
               />
             </b-card>
           </b-col>
