@@ -9,6 +9,7 @@ modules/**/.nyc_output
 coverage
 .nyc_output
 .coveralls.yml
+public
 
 # Editor directories and files
 .idea

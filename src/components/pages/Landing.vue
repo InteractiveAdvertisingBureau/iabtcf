@@ -5,6 +5,9 @@
       <li>
         <router-link to="encode">Encode</router-link>
       </li>
+      <li>
+        <router-link to="decode">Decode</router-link>
+      </li>
     </ul>
     <h4>External Links</h4>
     <ul>

@@ -47,7 +47,7 @@ export default class App extends Vue {
   public constructor() {
 
     super();
-    GVL.baseUrl = './';
+    GVL.baseUrl = './vendorlist';
 
   }
 

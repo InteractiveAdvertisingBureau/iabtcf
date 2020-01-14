@@ -12,9 +12,6 @@ $subtle-separator-color: #f3f3f3;
 $borders: 1px solid;
 $standard-space: 10px;
 
-body {
-  font-family: 'Open Sans', sans-serif;
-}
 
 a {
   color: $link-color;
@@ -54,4 +51,25 @@ h6 {
 }
 input:focus {
     outline:none;
+}
+.item-key {
+  font-weight: bold;
+}
+.item-key-only {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.item-string {
+  color: #6b9639;
+}
+.item-boolean {
+  color: #bf0880;
+}
+.item-null {
+  color: #FFFF00;
+}
+.item-date {
+  color: #39966e;
+}
+.output-item-list {
 }

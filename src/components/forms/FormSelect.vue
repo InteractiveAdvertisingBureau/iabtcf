@@ -5,7 +5,7 @@
       :label="label"
     >
       <b-form-select
-        id="id"
+        :id="id"
         v-model="selected"
         :options="options"
         @input="changeValue"

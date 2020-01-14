@@ -10,7 +10,7 @@
 <script lang="ts">
 
 import {TCString} from '@iabtcf/core';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
 
 @Component

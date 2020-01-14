@@ -85,7 +85,6 @@ if (isDevServer) {
   config.mode = 'development';
   config.devtool = 'eval-source-map';
   config.devServer = {
-    contentBase: '',
     hot: true,
     open: 'chrome',
     overlay: true,
