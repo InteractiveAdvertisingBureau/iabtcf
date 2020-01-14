@@ -108,7 +108,7 @@ export default class DecodeOutput extends FormComponent {
 
       } catch(err) {
 
-        retr = err.toString();
+        retr = `<span class="decode-output-error">${err.toString()}</span>`;
 
       }
     }

@@ -1,5 +1,6 @@
 <template>
   <b-container fluid>
+      <a href="https://github.com/InteractiveAdvertisingBureau/iabtcf"><img width="32" height="32" src="assets/GitHub-Mark-32px.png" class="forkin-github" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <b-row>
       <b-col cols="12">
         <Nav />

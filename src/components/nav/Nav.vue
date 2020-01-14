@@ -2,7 +2,7 @@
   <div>
     <b-navbar
       toggleable="lg"
-      type="light"
+      type="dark"
       variant="faded">
       <b-navbar-brand>
         <router-link to="/">

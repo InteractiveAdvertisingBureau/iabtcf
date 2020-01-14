@@ -12,7 +12,7 @@ const config: WebpackConfig = {
   entry: './src/main.ts',
   output: {
     filename: `site.js`,
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'docs'),
   },
   mode: 'production',
   module: {
@@ -84,10 +84,12 @@ if (isDevServer) {
 
   config.mode = 'development';
   config.devtool = 'eval-source-map';
+  config.devServer
   config.devServer = {
     hot: true,
     open: 'chrome',
     overlay: true,
+    contentBase: ['docs'],
     watchContentBase: true,
   };
 
