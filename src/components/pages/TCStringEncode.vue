@@ -109,6 +109,7 @@
               />
             </b-card>
           </b-col>
+
           <b-col cols="3">
             <b-card
               bg-variant="light"
@@ -124,7 +125,7 @@
                 label="Purpose Legitimate Interest"
                 :tc-model="tcModel"
                 :options="purposes"
-                id="purposeConsents"
+                id="purposeLegitimateInterests"
                 @update="update"
               />
               <big-form-select
