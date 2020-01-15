@@ -2,6 +2,7 @@
   <div>
   <template v-if="!isReady">
     <p>Loading...</p>
+    <b-spinner></b-spinner>
   </template>
   <template v-if="isReady">
     <form>
@@ -77,7 +78,6 @@
                 id="vendorLegitimateInterest"
               />
               <big-form-select
-                v-if="tcModel.isServiceSpecific"
                 label="OOB Vendors Allowed"
                 :tc-model="tcModel"
                 :options="vendors"

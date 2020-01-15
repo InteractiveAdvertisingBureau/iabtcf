@@ -1,5 +1,6 @@
 import DecodeInput from '../forms/DecodeInput.vue';
 import DecodeOutput from '../forms/DecodeOutput.vue';
+import DecodeOutputBits from '../forms/DecodeOutputBits.vue';
 
 import {Component, Vue} from 'vue-property-decorator';
 import {TCModel, GVL, TCString} from '@iabtcf/core';
@@ -11,6 +12,7 @@ GVL.baseUrl = document.location.origin;
   components: {
     'decode-input': DecodeInput,
     'decode-output': DecodeOutput,
+    'decode-output-bits': DecodeOutputBits,
 
   },
 })

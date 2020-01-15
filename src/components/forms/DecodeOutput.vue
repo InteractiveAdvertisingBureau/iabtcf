@@ -1,14 +1,62 @@
 <template>
-      <div 
-        class="decoded-output"
-        v-html="tcstringDecoded" 
-        >
-    </div>
+  <div class="decoded-output">
+    <b-card v-for="(segment, segName) in segments" v-if="error === null && segmentHasSomething(segment)" :header="keyToTitle(segName)">
+      <b-list-group>
+        <div v-for="key in segment">
+          <b-list-group-item v-if='isSingleValue(key)'>
+            <b-row>
+              <b-col cols="4" class="item-key">{{ keyToTitle(key) }}:</b-col>
+              <b-col cols="8" :class='getClass(tcModel[key])'>{{ formatValue(tcModel[key]) }}</b-col>
+            </b-row>
+          </b-list-group-item>
+          <b-list-group-item v-if='!isSingleValue(key) && getNumItems(key) > 0' v-b-toggle="'collapse-' + key" button>
+            <b-row>
+              <b-col cols="12" class="item-key">
+                {{ keyToTitle(key) }} &nbsp;
+                <b-badge variant="watermelon" pill>{{ getNumItems(key) }}</b-badge>
+              </b-col>
+            </b-row>
+            <b-collapse :id="'collapse-' + key">
+              <b-list-group>
+                <b-list-group-item v-if="isVector(tcModel[key])" v-for="tup in tcModel[key]">
+                  <span class="item-key">{{ tup[0] }}: </span>
+                  <span :class='getClass(tup[1])'>{{ tup[1] }}</span>
+                </b-list-group-item>
+                <b-list-group-item 
+                  v-if="isPurposeRestrictionVector(tcModel[key])" 
+                  v-for="purposeRestriction in tcModel.publisherRestrictions.getRestrictions()"
+                  v-b-toggle="'collapse-' + purposeRestriction.purposeId + ':' + purposeRestriction.restrictionType">
+                    {{ 'Purpose ' + purposeRestriction.purposeId + ' Restriction Type ' + purposeRestriction.restrictionType }}
+                    <b-collapse :id="'collapse-' + purposeRestriction.purposeId + ':' + purposeRestriction.restrictionType">
+                      <b-list-group>
+                        <b-list-group-item v-for="vendor in tcModel.publisherRestrictions.getVendors(purposeRestriction)">
+                          {{ vendor }}
+                        </b-list-group-item>
+                      </b-list-group>
+                    </b-collapse>
+                </b-list-group-item>
+              </b-list-group>
+            </b-collapse>
+          </b-list-group-item>
+        </div>
+      </b-list-group>
+    </b-card>
+    <b-card v-if="error !== null" header="Error">
+      <b-row>
+        <b-col cols="12">
+          <pre class="decode-output-error">
+            {{ error }}
+          </pre>
+        </b-col>
+      </b-row>
+    </b-card>
+  </div>
 </template>
 
 <script lang="ts">
 
-import {TCModel, TCString, Vector, PurposeRestrictionVector, PurposeRestriction, GVL} from '@iabtcf/core';
+// v-html="tcstringDecoded" 
+import {TCModel, TCString, Vector, PurposeRestrictionVector, PurposeRestriction, GVL, FieldSequence} from '@iabtcf/core';
 import {Component, Prop} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
 
@@ -17,103 +65,121 @@ export default class DecodeOutput extends FormComponent {
 
   @Prop()
   private tcString: string; 
+  private uniqueNum = 0;
+  private error: Error | null = null;
+  private fieldSequence = new FieldSequence();
 
-  private print(key: string | number, value: string | number | boolean | object | undefined, indent = 0): string {
+  private getClass(value: any): string {
 
-    const indentString = '&nbsp;&nbsp;'.repeat(indent);
-    let printedKey:string = key + '';
-    let str = '';
+    if(value instanceof Date) {
 
-    if(printedKey.charAt(printedKey.length - 1) === '_') {
-      printedKey = printedKey.substr(0, printedKey.length - 1);
+      return 'item-date';
+
+    } else {
+
+      return 'item-' + (typeof value);
     }
 
+  }
 
-    switch (typeof value) {
+  private keyToTitle(key: string): string {
 
-      case 'string':
-        str += `<div><span class="item-key">${indentString}${printedKey}:</span> <span class="item-string">"${value}"</span></div>`;
-        break;
-      case 'number':
-        str += `<div><span class="item-key">${indentString}${printedKey}:</span> <span class="item-number">${value}</span></div>`;
-        break;
-      case 'boolean':
-        str += `<div><span class="item-key">${indentString}${printedKey}:</span> <span class="item-boolean">${value}</span></div>`;
-        break;
-      case 'object':
-        if (value instanceof Date) {
-
-          str += `<div><span class="item-key">${indentString}${printedKey}:</span> <span class="item-date">${(value as Date).toString()}</span></div>`;
-
-        } else if (value === null) {
-
-          str += `<div><span class="item-key">${indentString}${printedKey}:</span> <span class="item-null">${value}</span></div>`;
-
-        } else if (value instanceof Vector) {
+    let retr = key.replace(/([A-Z])/g, ' $1');
+    retr = retr.replace(/^./, str => str.toUpperCase());
 
 
-          if(!value.size) {
-            return str;
-          }
-          str += `<div>${indentString}<span class="item-key-only">${printedKey}</span></div><div class="output-item-list">`;
-          value.forEach((bool: boolean, id: number): void => {
+    return retr;
+  }
 
-            str += this.print(id, bool, indent + 1);
+  private formatValue(value: string | boolean | number | null): string {
 
-          });
-          str += '</div>';
+    let retr = '' + value; 
 
-        } else if (value instanceof PurposeRestrictionVector) {
-          if(!value.numRestrictions) {
-            return str;
-          }
-          str += `<div>${indentString}<span class="item-key-only">${printedKey}</span></div>`;
-          value.getRestrictions().forEach((purpRestriction: PurposeRestriction): void => {
+    if(typeof value === "string") {
 
-            str += `<div><span class="item-key">${indentString}&nbsp;&nbsp;Purpose ${purpRestriction.purposeId} -> Restriction Type: ${purpRestriction.restrictionType}</span></div>`;
-            str += this.print('Vendors', value.getVendors(purpRestriction), indent + 2);
+      retr = `"${retr}"`;
 
-          });
-        } else if (value instanceof GVL) {
-
-            return str;
-        } else {
-
-          str += `<div>${indentString}<span class="item-key-only">${printedKey}</span></div>`;
-          Object.keys(value).forEach((key: string): void => {
-
-            str += this.print(key, value[key], indent + 1);
-
-          });
-
-        }
-
-        break;
-
-    }
-
-    return str;
-
-  };
-
-  private get tcstringDecoded(): string {
-
-    let retr = '';
-
-    if(this.tcString) {
-      try {
-
-        this.tcModel = TCString.decode(this.tcString);
-        retr = this.print('', this.tcModel);
-
-      } catch(err) {
-
-        retr = `<span class="decode-output-error">${err.toString()}</span>`;
-
-      }
     }
 
     return retr;
+  }
+
+  private isSingleValue(key:string): boolean {
+
+    return (key === "created" || key === "lastUpdated" || typeof this.tcModel[key] !== "object");
+
+  }
+
+  private segmentHasSomething(segment: string[]): boolean {
+
+
+    const version = this.tcModel.version.toString();
+    return segment.some((field: string):boolean => {
+      let retr = false;
+      const value = this.tcModel[field];
+
+      if(value instanceof Vector) {
+        retr = value.size > 0;
+      } else if(value instanceof Date) {
+        retr = true;
+      }
+
+      return retr;
+      
+    });
+
+  }
+
+  private isVector(thing: any): thing is Vector{
+
+    return thing instanceof Vector;
+
+  }
+
+  private isPurposeRestrictionVector(thing: any): thing is PurposeRestrictionVector {
+
+    return thing instanceof PurposeRestrictionVector ;
+
+  }
+
+  private getNumItems(key:string): number {
+
+    const value = this.tcModel[key];
+    let retr = 0;
+
+    if(value instanceof Vector) {
+
+      retr = value.maxId;
+
+    } else if(value instanceof PurposeRestrictionVector) {
+
+      retr = value.numRestrictions;
+
+    }
+
+    return retr;
+
+  }
+
+  private get segments(): string[][] {
+    let retr = [];
+
+    try {
+
+      this.tcModel = TCString.decode(this.tcString);
+
+      const version = this.tcModel.version.toString();
+      retr = this.fieldSequence[version];
+      this.error = null;
+
+    } catch (err) {
+
+      this.error = err;
+
+    }
+
+    return retr;
+
 
   }
 

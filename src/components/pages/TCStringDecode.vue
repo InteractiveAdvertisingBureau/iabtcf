@@ -18,16 +18,18 @@
       <b-row
             v-if="tcString"
         >
-        <b-col cols="12">
-          <b-card
-               header="Decoded TC String"
-            bg-variant="light"
-            class="b-card">
+        <b-row>
+          <b-col cols="5">
             <decode-output
               :tcString="tcString"
             />
-          </b-card>
-        </b-col>
+          </b-col>
+          <b-col cols="7">
+            <decode-output-bits
+              :tcString="tcString"
+            />
+          </b-col>
+        </b-row>
       </b-row>
 
     </form>
