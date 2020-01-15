@@ -18,6 +18,10 @@ const config: WebpackConfig = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
       },

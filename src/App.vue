@@ -1,22 +1,20 @@
 <template>
-  <b-container fluid>
-      <a href="https://github.com/InteractiveAdvertisingBureau/iabtcf"><img width="32" height="32" src="assets/GitHub-Mark-32px.png" class="forkin-github" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    <b-row>
-      <b-col cols="12">
-        <Nav />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col cols="12">
-        <transition
-          name="fade"
-          mode="out-in"
-        >
-          <router-view />
-        </transition>
-      </b-col>
-    </b-row>
-  </b-container>
+  <div>
+    <Nav />
+    <b-container fluid>
+      <div class="top-space"></div>
+      <b-row>
+        <b-col cols="12">
+          <transition
+            name="fade"
+            mode="out-in"
+          >
+            <router-view />
+          </transition>
+        </b-col>
+      </b-row>
+    </b-container>
+  </div>
 </template>
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';

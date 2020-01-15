@@ -9,6 +9,7 @@
         <b-col cols="12">
           <b-card
               class="b-card"
+              header="TC String"
             >
             <tc-string-input
               :tcModel="tcModel"
@@ -20,7 +21,6 @@
         <b-col cols="2">
           <b-card
             header="Meta Data"
-            bg-variant="light"
             class="b-card">
               <date-field
                 id="created"
@@ -57,14 +57,12 @@
                 :options="countries"
                 id="publisherCountryCode"
               />
-              <br >
             </b-card>
           </b-col>
 
           <b-col cols="3">
             <b-card
               header="Vendors"
-              bg-variant="light"
               class="b-card">
               <big-form-select
                 label="Vendor Consents"
@@ -90,7 +88,6 @@
           <b-col cols="3">
             <b-card
               header="Purposes & Special Features"
-              bg-variant="light"
               class="b-card">
               <big-form-select
                 label="Purpose Consents"
@@ -112,9 +109,8 @@
               />
             </b-card>
           </b-col>
-          <b-col cols="2">
+          <b-col cols="4">
             <b-card
-              bg-variant="light"
               class="b-card">
 
               <checkbox-boolean

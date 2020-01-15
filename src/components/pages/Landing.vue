@@ -1,30 +1,46 @@
 <template>
   <div>
-    <h4>TC string</h4>
-    <ul>
-      <li>
-        <router-link to="encode">Encode</router-link>
-      </li>
-      <li>
-        <router-link to="decode">Decode</router-link>
-      </li>
-    </ul>
-    <h4>External Links</h4>
-    <ul>
-      <li>
-        <a href="https://github.com/chrispaterson/iabtcf">
-          TCF Code Library Github
-        </a>
-      </li>
-      <li>
-        <a href="https://iabtechlab.com/">iab. Tech Lab</a>
-      </li>
-      <li>
-        <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework">
-          iab. TCF Github
-        </a>
-      </li>
-    </ul>
+    <b-row>
+      <b-col 
+        cols="2">
+        <b-card
+          header="TC String"
+          class="b-card">
+          <ul>
+            <li>
+              <router-link to="encode">Encode</router-link>
+            </li>
+            <li>
+              <router-link to="decode">Decode</router-link>
+            </li>
+          </ul>
+        </b-card>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col 
+        cols="2">
+        <b-card
+          header="External Links"
+          class="b-card">
+          <ul>
+            <li>
+              <a href="https://github.com/chrispaterson/iabtcf">
+                TCF Code Library Github
+              </a>
+            </li>
+            <li>
+              <a href="https://iabtechlab.com/">iab. Tech Lab</a>
+            </li>
+            <li>
+              <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework">
+                iab. TCF Github
+              </a>
+            </li>
+          </ul>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

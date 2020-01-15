@@ -2,11 +2,12 @@
   <div>
     <b-navbar
       toggleable="lg"
-      type="dark"
-      variant="faded">
+      type="light"
+      fixed="top">
+
       <b-navbar-brand>
         <router-link to="/">
-          Home
+          @iabtcf
         </router-link>
       </b-navbar-brand>
 
@@ -16,19 +17,28 @@
       <b-collapse
         id="nav-collapse"
         is-nav>
+
         <b-navbar-nav>
+
           <b-nav-item
             v-for="(link, idx) in links"
             :key="idx"
           >
-            <router-link :to="link.path">
+            <router-link 
+              :to="link.path"
+              >
               {{ link.title }}
             </router-link>
+
           </b-nav-item>
+
         </b-navbar-nav>
 
       </b-collapse>
+      <a href="https://github.com/InteractiveAdvertisingBureau/iabtcf"><img width="32" height="32" src="assets/GitHub-Mark-32px.png" class="github-link" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
     </b-navbar>
+
   </div>
 </template>
 
@@ -41,7 +51,7 @@ import {LinkModel} from '../../model/LinkModel';
 // eslint-disable-next-line
 @Component
 
-export default class extends Vue {
+export default class Nav extends Vue {
 
   public sectionModel: SectionModel = new SectionModel();
   public get links(): LinkModel[] {
