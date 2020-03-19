@@ -75,7 +75,7 @@
                 label="Vendor Legitimate Interest"
                 :tc-model="tcModel"
                 :options="vendors"
-                id="vendorLegitimateInterest"
+                id="vendorLegitimateInterests"
               />
               <big-form-select
                 label="OOB Vendors Allowed"
@@ -99,7 +99,7 @@
                 label="Purpose Legitimate Interest"
                 :tc-model="tcModel"
                 :options="purposes"
-                id="purposeLegitimateInterest"
+                id="purposeLegitimateInterests"
               />
               <big-form-select
                 label="Special Feature Optins"

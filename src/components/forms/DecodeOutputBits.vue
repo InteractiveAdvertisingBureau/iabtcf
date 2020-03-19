@@ -11,14 +11,14 @@
 
 <script lang="ts">
 
-import {Base64Url, BitLength, Segments, IntEncoder} from '@iabtcf/core';
+import {Base64Url, BitLength, SegmentIDs, IntEncoder} from '@iabtcf/core';
 import {Component, Prop} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
 
 @Component
 export default class DecodeOutputBits extends FormComponent {
 
-  @Prop()
+  @Prop(String)
   private tcString: string; 
 
   private addSpaces(str: string): string {
@@ -41,6 +41,7 @@ export default class DecodeOutputBits extends FormComponent {
     return retr;
 
   }
+
   private keyToTitle(key: string): string {
 
     key = key.replace(/([A-Z])/g, ' $1');
@@ -70,7 +71,7 @@ export default class DecodeOutputBits extends FormComponent {
           } else {
 
             const segTypeBits: string = decoded.substr(0, BitLength.segmentType);
-            segKey = Segments.ID_TO_KEY[IntEncoder.decode(segTypeBits).toString()];
+            segKey = SegmentIDs.ID_TO_KEY[IntEncoder.decode(segTypeBits).toString()];
 
           }
 
