@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as VueLoaderPlugin from 'vue-loader';
 import * as webpack from 'webpack';
 import * as webpackDevServer from 'webpack-dev-server';
+import * as packageJSON from './package.json';
 
 interface WebpackConfig extends webpack.Configuration {
   devServer?: webpackDevServer.Configuration;
@@ -75,6 +76,9 @@ const config: WebpackConfig = {
   plugins: [
     new VueLoaderPlugin.VueLoaderPlugin(),
     new webpack.ProgressPlugin(),
+    new webpack.DefinePlugin({
+      CORE_VERSION: JSON.stringify(packageJSON.dependencies['@iabtcf/core'])
+    }),
     new HtmlWebpackPlugin({
       title:'iabtcf: IAB TCF Code Library',
       template: './src/index.html',

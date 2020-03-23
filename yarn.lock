@@ -706,10 +706,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iabtcf/core@1.0.0-beta.20":
-  version "1.0.0-beta.20"
-  resolved "https://registry.yarnpkg.com/@iabtcf/core/-/core-1.0.0-beta.20.tgz#63e2acd4236e8bba1ac49d996f51c622fe5e6f7a"
-  integrity sha512-V5UVVgKSrtbm4uOvzfcXkHzPxMasEVJiJxze4sMr+4Tx/Qt1k0gGhLcGnkFL74rnhZkZF/FQ5NAcWKojnHl7ow==
+"@iabtcf/core@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@iabtcf/core/-/core-1.0.0-beta.23.tgz#288716114a8df5a08e39de7dcd42fec3ff0b122d"
+  integrity sha512-v3ixxjcC3gTsOaH+jpO/52Wa6wSl01T6GuTQQO7Moi0ussCiOs9Wv5HAEgDedvMm/Vask2euPUrYFFAJI2GI+Q==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
