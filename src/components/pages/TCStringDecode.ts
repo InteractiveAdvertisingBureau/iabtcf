@@ -1,10 +1,10 @@
 import DecodeInput from '../forms/DecodeInput.vue';
 import DecodeOutput from '../forms/DecodeOutput.vue';
 import DecodeOutputBits from '../forms/DecodeOutputBits.vue';
-
+import Json from '@iabtcf/core';
+import OpenIssueLink from '../OpenIssueLink.vue';
 import {Component, Vue} from 'vue-property-decorator';
 import {TCModel, GVL, TCString} from '@iabtcf/core';
-import Json from '@iabtcf/core';
 
 GVL.baseUrl = document.location.origin;
 
@@ -13,6 +13,7 @@ GVL.baseUrl = document.location.origin;
     'decode-input': DecodeInput,
     'decode-output': DecodeOutput,
     'decode-output-bits': DecodeOutputBits,
+    'open-issue-link': OpenIssueLink,
 
   },
 })

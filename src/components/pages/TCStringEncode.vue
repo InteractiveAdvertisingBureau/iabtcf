@@ -15,6 +15,7 @@
             <tc-string-input
               :tcModel="tcModel"
             />
+            <open-issue-link></open-issue-link>
           </b-card>
         </b-col>
       </b-row>

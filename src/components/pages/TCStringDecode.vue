@@ -11,6 +11,7 @@
             <decode-input
               :tcString.sync='tcString'
             />
+            <open-issue-link></open-issue-link>
           </b-card>
         </b-col>
       </b-row>

@@ -1,26 +1,27 @@
-import TextField from '../forms/TextField.vue';
-import DateField from '../forms/DateField.vue';
-import CheckboxBoolean from '../forms/CheckboxBoolean.vue';
-import TCStringInput from '../forms/TCStringInput.vue';
-import FormSelect from '../forms/FormSelect.vue';
 import BigFormSelect from '../forms/BigFormSelect.vue';
-
+import CheckboxBoolean from '../forms/CheckboxBoolean.vue';
+import Countries from '../../model/Countries';
+import DateField from '../forms/DateField.vue';
+import FormField from '../forms/FormField';
+import FormSelect from '../forms/FormSelect.vue';
+import Json from '@iabtcf/core';
+import OpenIssueLink from '../OpenIssueLink.vue';
+import TCStringInput from '../forms/TCStringInput.vue';
+import TextField from '../forms/TextField.vue';
 import {Component, Vue} from 'vue-property-decorator';
 import {TCModel, GVL, TCString, Vendor, Purpose, Feature} from '@iabtcf/core';
-import Json from '@iabtcf/core';
-import FormField from '../forms/FormField';
-import Countries from '../../model/Countries';
 
 GVL.baseUrl = document.location.origin;
 
 @Component({
   components: {
-    'text-field': TextField,
-    'date-field': DateField,
-    'tc-string-input': TCStringInput,
-    'checkbox-boolean': CheckboxBoolean,
-    'form-select': FormSelect,
     'big-form-select': BigFormSelect,
+    'checkbox-boolean': CheckboxBoolean,
+    'date-field': DateField,
+    'form-select': FormSelect,
+    'open-issue-link': OpenIssueLink,
+    'tc-string-input': TCStringInput,
+    'text-field': TextField,
   },
 })
 export default class extends Vue {

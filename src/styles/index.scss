@@ -122,5 +122,15 @@ pre {
   color: white;
 
 }
-.output-item-list {
+
+.file-issue-text {
+  margin-left: $standard-space;
+  font-size: 70%;
+  a {
+    color: $watermelon;
+    img {
+      height:15px;
+      width:15px;
+    }
+  }
 }
