@@ -106,7 +106,7 @@
                 label="Special Feature Optins"
                 :tc-model="tcModel"
                 :options="specialFeatures"
-                id="specialFeatureOptIns"
+                id="specialFeatureOptins"
               />
             </b-card>
           </b-col>
