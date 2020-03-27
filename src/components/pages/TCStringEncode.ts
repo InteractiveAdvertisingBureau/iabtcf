@@ -11,8 +11,6 @@ import TextField from '../forms/TextField.vue';
 import {Component, Vue} from 'vue-property-decorator';
 import {TCModel, GVL, TCString, Vendor, Purpose, Feature} from '@iabtcf/core';
 
-GVL.baseUrl = document.location.origin;
-
 @Component({
   components: {
     'big-form-select': BigFormSelect,

@@ -18,7 +18,10 @@
             </b-row>
             <b-collapse :id="'collapse-' + key">
               <b-list-group>
-                <b-list-group-item v-if="isVector(tcModel[key])" v-for="tup in tcModel[key]">
+                <b-list-group-item 
+                  v-for="tup in tcModel[key]"
+                  v-if="isVector(tcModel[key]) && tup[1]" 
+                  >
                   <span class="item-key">{{ tup[0] }}: </span>
                   <span :class='getClass(tup[1])'>{{ tup[1] }}</span>
                 </b-list-group-item>
@@ -102,6 +105,7 @@ export default class DecodeOutput extends FormComponent {
     }
 
     return retr;
+
   }
 
   private isSingleValue(key:string): boolean {
@@ -112,16 +116,24 @@ export default class DecodeOutput extends FormComponent {
 
   private segmentHasSomething(segment: string[]): boolean {
 
-
     const version = this.tcModel.version.toString();
+
     return segment.some((field: string):boolean => {
+
       let retr = false;
       const value = this.tcModel[field];
 
+
+
+
       if(value instanceof Vector) {
+
         retr = value.size > 0;
+
       } else if(value instanceof Date) {
+
         retr = true;
+
       }
 
       return retr;
@@ -149,7 +161,7 @@ export default class DecodeOutput extends FormComponent {
 
     if(value instanceof Vector) {
 
-      retr = value.maxId;
+      retr = value.size;
 
     } else if(value instanceof PurposeRestrictionVector) {
 
@@ -162,6 +174,7 @@ export default class DecodeOutput extends FormComponent {
   }
 
   private get segments(): string[][] {
+
     let retr = [];
 
     try {

@@ -92,10 +92,9 @@ if (isDevServer) {
 
   config.mode = 'development';
   config.devtool = 'eval-source-map';
-  config.devServer
   config.devServer = {
     hot: true,
-    open: 'chrome',
+    open: 'Google Chrome',
     overlay: true,
     contentBase: ['docs'],
     watchContentBase: true,

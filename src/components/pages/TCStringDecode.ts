@@ -6,8 +6,6 @@ import OpenIssueLink from '../OpenIssueLink.vue';
 import {Component, Vue} from 'vue-property-decorator';
 import {TCModel, GVL, TCString} from '@iabtcf/core';
 
-GVL.baseUrl = document.location.origin;
-
 @Component({
   components: {
     'decode-input': DecodeInput,

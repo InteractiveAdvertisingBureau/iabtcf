@@ -10,10 +10,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "prepare": "yarn run build",
     "build": "webpack",
     "lint": "eslint `find src -type f ( -name '*.ts' -name '*.vue' )`",
-    "lint:fix": "yarn run lint -- --fix",
     "test": "exit 0"
   },
   "keywords": [
@@ -43,7 +41,7 @@
     "gdpr"
   ],
   "dependencies": {
-    "@iabtcf/core": "1.0.0-beta.26",
+    "@iabtcf/core": "1.0.0-beta.29",
     "bootstrap-vue": "^2.1.0",
     "core-js": "^2.6.5",
     "jquery": "^3.4.0",

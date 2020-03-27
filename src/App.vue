@@ -35,6 +35,8 @@ const routes: RouteConfig[] = sectionModel.getRouteConfig();
 
 const router = new VueRouter({routes});
 
+GVL.baseUrl = '/vendorlist';
+
 @Component({
   router,
   components: {
@@ -42,13 +44,6 @@ const router = new VueRouter({routes});
   },
 })
 export default class App extends Vue {
-
-  public constructor() {
-
-    super();
-    GVL.baseUrl = './vendorlist';
-
-  }
 
 };
 </script>
