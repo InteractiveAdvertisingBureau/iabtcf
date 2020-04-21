@@ -26,6 +26,10 @@ const config: WebpackConfig = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
+       {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
       {
         test: /\.ts$/,
         use: [

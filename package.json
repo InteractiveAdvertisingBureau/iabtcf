@@ -41,8 +41,8 @@
     "gdpr"
   ],
   "dependencies": {
-    "@iabtcf/core": "1.0.0-beta.29",
-    "bootstrap-vue": "^2.1.0",
+    "@iabtcf/core": "1.0.1-1",
+    "bootstrap-vue": "2.9",
     "core-js": "^2.6.5",
     "jquery": "^3.4.0",
     "vue": "^2.6.10",
@@ -72,6 +72,7 @@
     "node-sass": "^4.12.0",
     "sass": "^1.23.0",
     "sass-loader": "^8.0.0",
+    "svg-inline-loader": "^0.8.2",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3",

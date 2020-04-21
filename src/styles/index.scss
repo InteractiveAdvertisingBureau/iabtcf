@@ -3,11 +3,11 @@
 @import 'bootstrap-vue/src/index';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
-$link-hover-color: #DD3333;
-$muted-title-color: #555;
-$subtle-background-color: #FFFFFF;
-$separator-color: #ccc;
-$subtle-separator-color: #F3F3F3;
+$link-hover: #DD3333;
+$muted-title: #555;
+$subtle-background: #FFFFFF;
+$separator: #ccc;
+$subtle-separator: #F3F3F3;
 $borders: 1px solid;
 $standard-space: 10px;
 
@@ -89,11 +89,42 @@ input:focus {
 .github-link {
   float: right;
 }
+.jumbotron-bg {
+
+  background: $off-white url('/assets/EUStars.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.navbar-bg {
+  background-image:  url('/assets/EUStars.svg');
+  background-repeat: no-repeat;
+  background-size: 6%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+}
 .navbar {
   background-color: $off-white;
   border-bottom: 1px solid $watermelon;
   box-shadow: 0px 5px 5px #DDD;
 }
+
 .b-card {
   box-shadow: 0px 0px 5px #DDD;
 }
@@ -133,4 +164,40 @@ pre {
       width:15px;
     }
   }
+}
+
+.header-sub-title {
+
+  padding: 0px 10px;
+  font-size: .8em;
+
+}
+.text-watermelon {
+
+  color: $watermelon;
+
+}
+
+legend, label  {
+  color: $muted-title;
+  font-weight: bold;
+}
+
+.tcstring {
+  margin-bottom: $standard-space
+}
+.tcstring-input {
+  margin-bottom: $standard-space
+}
+.techlab-logo {
+  margin-right:5px;
+  margin-top:20px;
+  display: inline;
+  height: 5%;
+  width: 5%;
+}
+.iabeurope-logo {
+  display: inline;
+  height: 6%;
+  width: 6%;
 }

@@ -1,19 +1,13 @@
 <template>
   <div>
     <Nav />
-    <b-container fluid>
-      <div class="top-space"></div>
-      <b-row>
-        <b-col cols="12">
-          <transition
-            name="fade"
-            mode="out-in"
-          >
-            <router-view />
-          </transition>
-        </b-col>
-      </b-row>
-    </b-container>
+    <div class="top-space"></div>
+    <transition
+      name="fade"
+      mode="out-in"
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 <script lang="ts">
@@ -35,18 +29,25 @@ const routes: RouteConfig[] = sectionModel.getRouteConfig();
 
 const router = new VueRouter({routes});
 
-GVL.baseUrl = '/vendorlist';
-
 @Component({
   router,
   components: {
     Nav,
   },
 })
+
+
 export default class App extends Vue {
+
+  private mounted(): void {
+
+    GVL.baseUrl = './vendorlist';
+
+  }
 
 };
 </script>
 <style lang="scss">
   @import './styles/index.scss';
 </style>
+/style>

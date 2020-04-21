@@ -71,7 +71,7 @@ export default class DecodeOutputBits extends FormComponent {
           } else {
 
             const segTypeBits: string = decoded.substr(0, BitLength.segmentType);
-            segKey = SegmentIDs.ID_TO_KEY[IntEncoder.decode(segTypeBits).toString()];
+            segKey = SegmentIDs.ID_TO_KEY[IntEncoder.decode(segTypeBits, BitLength.segmentType).toString()];
 
           }
 

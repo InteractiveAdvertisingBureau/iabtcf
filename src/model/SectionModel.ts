@@ -1,8 +1,9 @@
-import {RouteConfig} from 'vue-router';
+import DocsHome from '../components/pages/DocsHome.vue';
 import Landing from '../components/pages/Landing.vue';
-import TCStringEncode from '../components/pages/TCStringEncode.vue';
 import TCStringDecode from '../components/pages/TCStringDecode.vue';
+import TCStringEncode from '../components/pages/TCStringEncode.vue';
 import {LinkModel} from '../model/LinkModel';
+import {RouteConfig} from 'vue-router';
 
 class SectionModel extends Map {
 
@@ -10,15 +11,14 @@ class SectionModel extends Map {
 
     super();
 
-    this.init();
-
-  }
-  private init(): void {
-
     const encoder: LinkModel = new LinkModel('Encode', TCStringEncode);
     const decoder: LinkModel = new LinkModel('Decode', TCStringDecode);
 
     this.set('TCString', [encoder, decoder]);
+
+    const docsHome: LinkModel = new LinkModel('Documentation', DocsHome);
+
+    this.set('Documentation', [docsHome]);
 
   }
 

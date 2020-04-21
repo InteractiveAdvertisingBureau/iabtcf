@@ -5,11 +5,9 @@
       type="light"
       fixed="top">
 
-      <b-navbar-brand>
-        <router-link to="/">
-          @iabtcf
-        </router-link>
-      </b-navbar-brand>
+      <div class='navbar-bg'></div>
+
+      <HomeLink />
 
       <b-navbar-toggle
       target="nav-collapse"/>
@@ -34,7 +32,9 @@
 
         </b-navbar-nav>
 
+
       </b-collapse>
+      <span class="header-sub-title">Tools for the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework">GDPR Transparency and Consent Framework (TCF)</a></span>
       <a href="https://github.com/InteractiveAdvertisingBureau/iabtcf"><img width="32" height="32" src="assets/GitHub-Mark-32px.png" class="github-link" alt="Fork me on GitHub" data-recalc-dims="1"></a>
 
     </b-navbar>
@@ -46,10 +46,15 @@
 import {Component, Vue} from 'vue-property-decorator';
 import {SectionModel} from '../../model/SectionModel';
 import {LinkModel} from '../../model/LinkModel';
+import HomeLink from '../HomeLink.vue';
 
 // eslint doesn't like these decorators...
 // eslint-disable-next-line
-@Component
+@Component({
+  components: {
+    HomeLink
+  }
+})
 
 export default class Nav extends Vue {
 

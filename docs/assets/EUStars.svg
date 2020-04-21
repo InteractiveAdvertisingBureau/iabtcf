@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="630"
+   height="630"
+   viewBox="0 0 27 18"
+   id="svg2239"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docname="Stars_of_the_European_Union_(bw).svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docbase="P:\work\WIKI\contrib\commons\Image">
+  <metadata
+     id="metadata2280">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="969"
+     inkscape:window-width="1272"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="0.6"
+     inkscape:cx="472.5"
+     inkscape:cy="315"
+     inkscape:window-x="1280"
+     inkscape:window-y="0"
+     inkscape:current-layer="svg2239"
+     width="630px"
+     height="630px" />
+  <desc
+     id="desc2241">Stars of the European Union (black and white)</desc>
+  <defs
+     id="defs2243">
+    <g
+       id="s">
+      <g
+         id="c">
+        <path
+           id="t"
+           d="M 0,0 L 0,1 L 0.5,1 L 0,0 z "
+           transform="matrix(0.9510565,0.309017,-0.309017,0.9510565,0,-1)" />
+        <use
+           xlink:href="#t"
+           transform="scale(-1,1)"
+           id="use2248"
+           x="0"
+           y="0"
+           width="27"
+           height="18" />
+      </g>
+      <use
+         xlink:href="#c"
+         transform="matrix(0.309017,0.9510565,-0.9510565,0.309017,0,0)"
+         id="use2250"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#c"
+         transform="matrix(-0.809017,0.5877853,-0.5877853,-0.809017,0,0)"
+         id="use2252"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#c"
+         transform="matrix(-0.809017,-0.5877853,0.5877853,-0.809017,0,0)"
+         id="use2254"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#c"
+         transform="matrix(0.309017,-0.9510565,0.9510565,0.309017,0,0)"
+         id="use2256"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+    </g>
+  </defs>
+  <g
+     transform="matrix(1.9155509,0,0,1.9155509,13.5,9.1829188)"
+     id="g2260"
+     style="fill:#000000">
+    <use
+       xlink:href="#s"
+       transform="translate(0,-6)"
+       id="use2262"
+       style="fill:#000000"
+       x="0"
+       y="0"
+       width="27"
+       height="18" />
+    <g
+       id="r"
+       style="fill:#000000">
+      <use
+         xlink:href="#s"
+         transform="matrix(0.309017,0.9510565,-0.9510565,0.309017,-3,5.1961524)"
+         id="use2265"
+         style="fill:#000000"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#s"
+         transform="matrix(0.309017,0.9510565,-0.9510565,0.309017,-5.1961524,3)"
+         id="use2267"
+         style="fill:#000000"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#s"
+         transform="translate(6,0)"
+         id="use2269"
+         style="fill:#000000"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#s"
+         transform="matrix(-0.809017,0.5877853,-0.5877853,-0.809017,-5.1961524,-3)"
+         id="use2271"
+         style="fill:#000000"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+      <use
+         xlink:href="#s"
+         transform="matrix(-0.809017,-0.5877853,0.5877853,-0.809017,-3,-5.1961524)"
+         id="use2273"
+         style="fill:#000000"
+         x="0"
+         y="0"
+         width="27"
+         height="18" />
+    </g>
+    <use
+       xlink:href="#s"
+       transform="translate(0,6)"
+       id="use2275"
+       style="fill:#000000"
+       x="0"
+       y="0"
+       width="27"
+       height="18" />
+    <use
+       xlink:href="#r"
+       transform="scale(-1,1)"
+       id="use2277"
+       style="fill:#000000"
+       x="0"
+       y="0"
+       width="27"
+       height="18" />
+  </g>
+</svg>
