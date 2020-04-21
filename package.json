@@ -41,7 +41,7 @@
     "gdpr"
   ],
   "dependencies": {
-    "@iabtcf/core": "1.0.0-beta.29",
+    "@iabtcf/core": "1.0.0",
     "bootstrap-vue": "^2.1.0",
     "core-js": "^2.6.5",
     "jquery": "^3.4.0",
