@@ -21,11 +21,12 @@ export default class TCStringDecode extends Vue {
 
   private created(): void {
 
-    if(document.location.hash.split('#')[2] !== undefined) {
+    if(this.$route.query?.tcstring) {
 
-      this.tcString = document.location.hash.split('#')[2];
+      this.tcString = this.$route.query.tcstring as string;
 
-    }  
+    }
+
   }
 
 }

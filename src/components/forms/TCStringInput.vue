@@ -9,10 +9,15 @@
     />
     </b-col>
     <b-col cols="2">
-      <b-button 
-        class="view-decoded"
-        variant="outline-watermelon"
-        size="sm" :href="'#/decode#' + tcstring">View Decoded</b-button>
+      <router-link :to="{ path: 'decode', query: {tcstring:tcstring}}">
+        <b-button 
+          class="view-decoded"
+          variant="outline-watermelon"
+          size="sm" 
+          :href="href" @click="navigate">
+            View Decoded
+        </b-button>
+      </router-link>
     </b-col>
   </b-row>
 </template>
