@@ -1,60 +1,113 @@
+const WARN = 'warn';
+const ERROR = 'error';
+const OFF = 'off';
+const ALWAYS = 'always';
+const FIRST = 'first';
+
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
+    'eslint:recommended',
     'google',
-    'plugin:json/recommended',
   ],
-  settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': [ 
-        '.ts' 
-      ]
-    },
+  env: {
+    browser: true,
+    mocha: true,
+    node: true,
+    es6: true,
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser',
-    ecmaVersion: 2018,
     sourceType: 'module',
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.d.ts'],
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+      ],
+      plugins:[
+        '@typescript-eslint',
+      ],
+      rules: {
+        '@typescript-eslint/indent': [ERROR, 2],
+        '@typescript-eslint/no-var-requires': OFF,
+      },
+    },
+    {
+      files: ['**/*.vue'],
+      extends: [
+        'plugin:vue/recommended',
+        '@vue/eslint-config-typescript/recommended'
+      ]
+    },
+    {
+      files: ['**/*.json'],
+      plugins: [
+        'json'
+      ],
+      extends: [
+        'plugin:json/recommended',
+      ],
+      rules: {
+        'comma-dangle': ['error', 'never'],
+      }
+    },
+  ],
   rules: {
-    'import/no-cycle': ['error', { maxDepth: 1 }],
-    '@typescript-eslint/indent': ['error', 2],
-    'max-len': ['error', {
-      'ignoreUrls': true,
-      'ignoreStrings': true,
-      'ignoreTemplateLiterals': true,
-      'ignoreRegExpLiterals': true,
-      'code': 120
+    'max-len': OFF,
+    'no-multiple-empty-lines':[ERROR, {'max':1, 'maxEOF':0, 'maxBOF':0}],
+    'require-jsdoc': OFF,
+    'semi': ERROR,
+    'padded-blocks': [ERROR, ALWAYS],
+    'no-console': ERROR,
+    'no-debugger': ERROR,
+    'valid-jsdoc': OFF,
+    'lines-around-comment': [ERROR, { 
+      'beforeBlockComment': true, 
+      'beforeLineComment': true
     }],
-    'no-multiple-empty-lines':['error', {'max':1, 'maxEOF':0, 'maxBOF':0}],
-    'require-jsdoc': [0],
-    'semi': ['error', 'always'],
-    'padded-blocks': ['error', 'always'],
-    'no-console': 'error',
-    'no-debugger': 'error',
-    '@typescript-eslint/indent': ['error', 2],
+    'multiline-comment-style': [ERROR, "starred-block"],
+    'spaced-comment': [ERROR, ALWAYS],
+    'newline-per-chained-call': [ERROR, { "ignoreChainWithDepth": 2 }],
+    'no-ternary': ERROR,
+    'object-curly-newline': [ERROR, {
+      'ObjectExpression': {
+        'multiline': true,
+        'minProperties': 1
+      },
+      'ObjectPattern': {
+        'multiline': true,
+        'minProperties': 1
+      },
+      'ImportDeclaration': {
+        'multiline': true,
+        'minProperties': 3
+      },
+      'ExportDeclaration': {
+        'multiline': true,
+        'minProperties': 3
+      },
+    }],
     'indent': [
-      'error', 2, {
-        'ArrayExpression': 'first',
-        'FunctionExpression': {'body': 1, 'parameters': 'first'},
-        'ObjectExpression': 'first',
+      ERROR, 2, {
+        'ArrayExpression': FIRST,
+        'FunctionExpression': {'body': 1, 'parameters': FIRST},
+        'ObjectExpression': FIRST,
         'SwitchCase': 1,
-        'CallExpression': {'arguments': 'first'},
+        'CallExpression': {'arguments': FIRST},
       },
     ],
     'padding-line-between-statements': [
-      'error',
+      ERROR,
       {'blankLine': 'any', 'prev': ['const', 'let', 'var'], 'next': ['const', 'let', 'var']},
-      {'blankLine': 'always', 'prev': '*',  'next': 'class'},
-      {'blankLine': 'always', 'prev': '*',  'next': 'function'},
-      {'blankLine': 'always', 'prev': 'block-like',  'next': '*'},
-      {'blankLine': 'always', 'prev': '*',  'next': 'block-like'},
+      {'blankLine': ALWAYS, 'prev': '*',  'next': 'class'},
+      {'blankLine': ALWAYS, 'prev': '*',  'next': 'class'},
+      {'blankLine': ALWAYS, 'prev': '*',  'next': 'function'},
+      {'blankLine': ALWAYS, 'prev': 'block-like',  'next': '*'},
+      {'blankLine': ALWAYS, 'prev': '*',  'next': 'block-like'},
     ],
-    'new-cap': 'off'
+    'new-cap': [ERROR, {'newIsCap': true, 'capIsNew': false}]
   },
 };

@@ -1,4 +1,6 @@
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {
+  Component, Prop, Vue,
+} from 'vue-property-decorator';
 import {TCModel} from '@iabtcf/core';
 
 @Component

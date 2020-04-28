@@ -1,10 +1,10 @@
 <template>
   <b-form-group
     description="Please enter an encoded TC string"
-    >
+  >
     <b-form-input
-      class="tcstring-input"
       v-model="tcString"
+      class="tcstring-input"
       @click="selectContents"
       @input="$emit('update:tcString', tcString)"
     />
@@ -31,7 +31,7 @@ export default class DecodeInput extends FormComponent {
     }
 
   }
-  
+
 }
 
 </script>

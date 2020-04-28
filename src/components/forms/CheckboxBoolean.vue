@@ -1,10 +1,10 @@
 <template>
-  <b-input-group >
+  <b-input-group>
     <b-form-checkbox
       :id="id"
       :name="id"
-      @input="changeValue"
       switch
+      @input="changeValue"
     >
       {{ label }}
     </b-form-checkbox>

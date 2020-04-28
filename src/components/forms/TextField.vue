@@ -1,13 +1,13 @@
 <template>
-  <b-input-group >
+  <b-input-group>
     <b-form-group
       :label="label"
     >
       <b-form-input
         v-model="tcModel[id]"
         size="sm"
-        @input="changeValue"
         trim
+        @input="changeValue"
       />
     </b-form-group>
   </b-input-group>

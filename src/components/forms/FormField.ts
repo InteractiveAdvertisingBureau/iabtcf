@@ -1,6 +1,6 @@
-export default interface FormField {
+export interface FormField {
 
   value: string;
   text: string;
 
-};
+}

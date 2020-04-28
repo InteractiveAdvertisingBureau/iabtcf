@@ -1,21 +1,23 @@
 <template>
   <b-row>
     <b-col cols="10">
-    <b-form-input
-      class="tcstring-input"
-      v-model="tcstring"
-      @click="selectContents"
-      plaintext
-    />
+      <b-form-input
+        v-model="tcstring"
+        class="tcstring-input"
+        plaintext
+        @click="selectContents"
+      />
     </b-col>
     <b-col cols="2">
       <router-link :to="{ path: 'decode', query: {tcstring:tcstring}}">
-        <b-button 
+        <b-button
           class="view-decoded"
           variant="outline-watermelon"
-          size="sm" 
-          :href="href" @click="navigate">
-            View Decoded
+          size="sm"
+          :href="href"
+          @click="navigate"
+        >
+          View Decoded
         </b-button>
       </router-link>
     </b-col>

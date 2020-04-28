@@ -1,5 +1,5 @@
 <template>
-  <b-input-group >
+  <b-input-group>
     <b-form-group
       :id="id"
       :label="label"

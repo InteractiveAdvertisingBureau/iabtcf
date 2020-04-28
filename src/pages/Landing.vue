@@ -1,9 +1,7 @@
 <template>
   <b-row>
     <b-col>
-      <b-card>
-        <h1>iabtcf</h1>
-      </b-card>
+      <h1>iabtcf</h1>
     </b-col>
   </b-row>
 </template>
@@ -13,8 +11,7 @@ import {Component, Vue} from 'vue-property-decorator';
 
 // eslint-disable-next-line
 @Component({
-  components: {
-  },
+  components: {},
 })
 export default class Landing extends Vue {}
 </script>

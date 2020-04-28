@@ -18,7 +18,6 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "downlevelIteration": true,
-    "pretty": true,
     "forceConsistentCasingInFileNames": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,

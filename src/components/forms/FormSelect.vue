@@ -1,5 +1,5 @@
 <template>
-  <b-input-group >
+  <b-input-group>
     <b-form-group
       :label-for="id"
       :label="label"
@@ -8,10 +8,9 @@
         :id="id"
         v-model="selected"
         :options="options"
-        @input="changeValue"
         class="mt-3"
+        @input="changeValue"
       />
-
     </b-form-group>
   </b-input-group>
 </template>
@@ -19,7 +18,7 @@
 <script lang="ts">
 import {Component, Prop} from 'vue-property-decorator';
 import {FormComponent} from './FormComponent';
-import FormField from './FormField';
+import {FormField} from './FormField';
 
 @Component
 
@@ -28,7 +27,7 @@ export default class extends FormComponent {
   @Prop()
   public options: FormField[];
 
-  private selected: string = '';
+  private selected = '';
 
   public mounted(): void {
 

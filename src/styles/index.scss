@@ -9,7 +9,7 @@ $subtle-background: #FFFFFF;
 $separator: #ccc;
 $subtle-separator: #F3F3F3;
 $borders: 1px solid;
-$standard-space: 10px;
+$standard-space: 15px;
 
 $off-white: #FBFDFD;
 $sky: #CAEBF2;
@@ -36,10 +36,6 @@ a {
   }
 }
 
-.row {
-  margin: $standard-space 0px;
-}
-
 h6 {
   font-family: Arial;
   font-weight: bolder;
@@ -60,86 +56,89 @@ h6 {
 button:focus {
   outline:0;
 }
+
 input:focus {
   outline:0;
 }
+
 .item-key {
   font-weight: bold;
 }
-.item-key-only {
-  font-weight: bold;
-  text-decoration: underline;
+
+.segment-head {
+  margin-top: $standard-space;
+  background-color: $subtle-separator;
 }
+
 .item-string {
   color: #6b9639;
 }
+
 .item-boolean {
+  font-weight: bold;
   color: #bf0880;
 }
+
 .item-null {
   color: #FFFF00;
 }
+
 .item-date {
   color: #39966e;
 }
+
 .decode-output-error {
   font-weight: bold;
   color: #DD3333;
 }
+
+.root-row {
+
+  margin-top: 0px;
+  padding-top: $standard-space;
+  background-color: $off-white;
+  box-shadow: 0px 0px 5px #DDD;
+
+}
+
+.navbar-brand {
+
+  margin-left: 15px;
+
+}
+
+.navbar-text {
+
+  font-size:.9em;
+  line-height:2.25em;
+
+}
+
 .github-link {
+
   float: right;
-}
-.jumbotron-bg {
+  margin-left: $standard-space;
 
-  background: $off-white url('/assets/EUStars.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
 }
 
-.navbar-bg {
-  background-image:  url('/assets/EUStars.svg');
-  background-repeat: no-repeat;
-  background-size: 6%;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: -20px;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .2;
-}
-.navbar {
+nav {
+
   background-color: $off-white;
   border-bottom: 1px solid $watermelon;
   box-shadow: 0px 5px 5px #DDD;
-}
-
-.b-card {
-  box-shadow: 0px 0px 5px #DDD;
-}
-.top-space {
-  padding:30px;
-}
-pre {
-  white-space: pre-wrap;
-}
-.badge-watermelon {
-
-  background-color: $watermelon;
-  color: white;
 
 }
+
+.bits {
+  font-family: monospace;
+  margin-top: $standard-space;
+  overflow-wrap: break-word;
+}
+
+.code-ish {
+  font-family: monospace;
+}
+
 .btn-outline-watermelon {
   color: $watermelon;
   border-color: $watermelon;
@@ -172,6 +171,7 @@ pre {
   font-size: .8em;
 
 }
+
 .text-watermelon {
 
   color: $watermelon;
@@ -184,20 +184,12 @@ legend, label  {
 }
 
 .tcstring {
+
   margin-bottom: $standard-space
+
 }
 .tcstring-input {
+
   margin-bottom: $standard-space
-}
-.techlab-logo {
-  margin-right:5px;
-  margin-top:20px;
-  display: inline;
-  height: 5%;
-  width: 5%;
-}
-.iabeurope-logo {
-  display: inline;
-  height: 6%;
-  width: 6%;
+
 }
