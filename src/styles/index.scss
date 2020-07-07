@@ -10,6 +10,7 @@ $separator: #ccc;
 $subtle-separator: #F3F3F3;
 $borders: 1px solid;
 $standard-space: 15px;
+$double-space: 30px;
 
 $off-white: #FBFDFD;
 $sky: #CAEBF2;
@@ -20,9 +21,11 @@ $body-text: #545454;
 
 
 body {
+
   background-color: $off-white;
   background: url('assets/background.jpg') repeat;
   color: $body-text;
+
 }
 
 a {
@@ -37,8 +40,10 @@ a {
 }
 
 h6 {
+
   font-family: Arial;
   font-weight: bolder;
+
 }
 
 .fade-enter-active,
@@ -50,8 +55,23 @@ h6 {
 
 .fade-enter,
 .fade-leave-active {
+
   opacity: 0;
+
 }
+.tcstring-main-body {
+  .segment-head {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: $subtle-separator;
+    border-bottom: 1px solid $watermelon;
+  }
+  .collapse {
+    padding: $standard-space;
+  }
+}
+
+
 
 button:focus {
   outline:0;
@@ -63,11 +83,6 @@ input:focus {
 
 .item-key {
   font-weight: bold;
-}
-
-.segment-head {
-  margin-top: $standard-space;
-  background-color: $subtle-separator;
 }
 
 .item-string {
@@ -95,15 +110,9 @@ input:focus {
 .root-row {
 
   margin-top: 0px;
-  padding-top: $standard-space;
+  padding: $double-space 0px;
   background-color: $off-white;
   box-shadow: 0px 0px 5px #DDD;
-
-}
-
-.navbar-brand {
-
-  margin-left: 15px;
 
 }
 
@@ -112,6 +121,17 @@ input:focus {
   font-size:.9em;
   line-height:2.25em;
 
+}
+
+.navbar-brand {
+  padding-top: 0px;
+  a {
+      &:hover {
+        color:$watermelon;
+        fill:$watermelon;
+
+      }
+  }
 }
 
 .github-link {
@@ -129,58 +149,42 @@ nav {
 
 }
 
+.code-ish {
+  font-family: $font-family-monospace;
+}
 .bits {
-  font-family: monospace;
+  font-size:.75em;
+  color: #666;
+  clear: both;
+  display: inline-block;
+  width: 100%;
+  font-family: $font-family-monospace;
   margin-top: $standard-space;
   overflow-wrap: break-word;
 }
 
-.code-ish {
-  font-family: monospace;
-}
-
-.btn-outline-watermelon {
-  color: $watermelon;
-  border-color: $watermelon;
-  color: $body-text;
-}
-
-.btn-outline-watermelon:hover {
-
-  background-color: $watermelon;
-  border-color: $off-white;
-  color: white;
-
-}
-
 .file-issue-text {
-  margin-left: $standard-space;
-  font-size: 70%;
+
+  float:right;
+  font-size: .7em;
   a {
+
     color: $watermelon;
+
     img {
+
       height:15px;
       width:15px;
+
     }
   }
 }
 
-.header-sub-title {
-
-  padding: 0px 10px;
-  font-size: .8em;
-
-}
-
-.text-watermelon {
-
-  color: $watermelon;
-
-}
 
 legend, label  {
+
   color: $muted-title;
-  font-weight: bold;
+
 }
 
 .tcstring {
@@ -188,8 +192,10 @@ legend, label  {
   margin-bottom: $standard-space
 
 }
-.tcstring-input {
 
-  margin-bottom: $standard-space
+.decode-link {
+
+  font-size: .75em;
+  line-height: 3em;
 
 }

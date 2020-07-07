@@ -1,39 +1,63 @@
 <template>
-  <b-row>
-    <b-col cols="10">
-      <b-form-input
-        v-model="tcstring"
-        class="tcstring-input"
-        plaintext
-        @click="selectContents"
-      />
-    </b-col>
-    <b-col cols="2">
-      <router-link :to="{ path: 'decode', query: {tcstring:tcstring}}">
-        <b-button
-          class="view-decoded"
-          variant="outline-watermelon"
-          size="sm"
-          :href="href"
-          @click="navigate"
-        >
-          View Decoded
-        </b-button>
-      </router-link>
-    </b-col>
-  </b-row>
+  <div
+    class="tcstring"
+  >
+    <b-row>
+      <b-col>
+        <b-form-input
+          v-model="tcstring"
+          @click="selectContents"
+        />
+      </b-col>
+    </b-row>
+    <b-row
+      v-if="tcstring"
+    >
+      <b-col cols="11">
+        <div class="file-issue-text">
+    &nbsp;&nbsp;
+          <a
+            href="https://github.com/InteractiveAdvertisingBureau/iabtcf-es/tree/master/modules/core"
+            target="_blank"
+          >@iabtcf/core</a>
+          version {{ coreVersion }}
+          <a
+            href="https://github.com/InteractiveAdvertisingBureau/iabtcf-es/issues/new/choose"
+            target="_blank"
+          >
+            open an issue
+            <img src="assets/external-link.png">
+          </a>
+        </div>
+      </b-col>
+    </b-row>
+  </div>
 </template>
 
 <script lang="ts">
 
-import {TCString} from '@iabtcf/core';
-import {Component} from 'vue-property-decorator';
-import {FormComponent} from './FormComponent';
+declare const CORE_VERSION: string;
+
+import {TCModel, TCString} from '@iabtcf/core';
+import {
+  Component, Prop, Vue,
+} from 'vue-property-decorator';
 
 @Component
-export default class extends FormComponent {
+export default class extends Vue {
 
-  private tcstring_: string;
+  @Prop(Object)
+  private tcModel: TCModel;
+
+  private selectContents(e: MouseEvent): void {
+
+    if (e?.target) {
+
+      (e.target as HTMLInputElement).select();
+
+    }
+
+  }
 
   private get tcstring(): string {
 
@@ -41,13 +65,9 @@ export default class extends FormComponent {
 
   }
 
-  private selectContents(e: MouseEvent): void {
+  private get coreVersion(): string {
 
-    if (e && e.target && e.target) {
-
-      (e.target as HTMLInputElement).select();
-
-    }
+    return CORE_VERSION;
 
   }
 

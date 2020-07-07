@@ -20,15 +20,15 @@ const config: WebpackConfig = {
     rules: [
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
       },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
-       {
+      {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.ts$/,
@@ -42,7 +42,7 @@ const config: WebpackConfig = {
             },
           },
         ],
-      }, 
+      },
       {
         test: /\.(s*)css$/, // match any .scss or .css file,
         include: [
@@ -50,18 +50,18 @@ const config: WebpackConfig = {
           path.resolve(__dirname, './node_modules/bootstrap/'),
         ],
         use: [
-          "vue-style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
   },
   resolve: {
     alias: {
@@ -81,10 +81,10 @@ const config: WebpackConfig = {
     new VueLoaderPlugin.VueLoaderPlugin(),
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
-      CORE_VERSION: JSON.stringify(packageJSON.dependencies['@iabtcf/core'])
+      CORE_VERSION: JSON.stringify(packageJSON.dependencies['@iabtcf/core']),
     }),
     new HtmlWebpackPlugin({
-      title:'iabtcf: IAB TCF Code Library',
+      title: 'iabtcf: IAB TCF Code Library',
       template: './src/index.html',
     }),
   ],
@@ -100,10 +100,10 @@ if (isDevServer) {
     hot: true,
     open: 'Google Chrome',
     overlay: true,
-    contentBase: ['docs'],
+    contentBase: ['docs', 'src'],
     watchContentBase: true,
   };
 
-} 
+}
 
 export default config;

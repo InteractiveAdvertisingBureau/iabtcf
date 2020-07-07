@@ -10,7 +10,14 @@
           class="home-link"
           to="/"
         >
-          iabtcf
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 260 245"
+            width="30"
+            height="28"
+          >
+            <path d="m55,237 74-228 74,228L9,96h240" />
+          </svg>
         </router-link>
       </b-navbar-brand>
 
@@ -73,6 +80,41 @@ import {LinkModel} from '../../model/LinkModel';
 export default class Nav extends Vue {
 
   public sectionModel: SectionModel = new SectionModel();
+
+  private created(): void {
+
+    window.onscroll = this.onScroll;
+
+  }
+  private onScroll(): void {
+
+    let percent = document.documentElement.scrollTop/100;
+    const navItems = document.getElementsByClassName('nav-item');
+    const brandItems = document.getElementsByClassName('navbar-brand');
+
+    if (percent > 1) {
+
+      percent = 1;
+
+    }
+
+    for ( let i = 0; i < navItems.length; i++ ) {
+
+      const navItem = navItems[i] as HTMLElement;
+      navItem.style.marginTop = 0 - (20*percent) + 'px';
+      navItem.style.marginBottom = 0 - (20*percent) + 'px';
+
+    }
+
+    for ( let i = 0; i < brandItems.length; i++ ) {
+
+      const brand = brandItems[i] as HTMLElement;
+      brand.style.marginTop = 0 - (20*percent) + 'px';
+      brand.style.marginBottom = 0 - (20*percent) + 'px';
+
+    }
+
+  }
   public get links(): LinkModel[] {
 
     const retr: LinkModel[] = [];
@@ -87,6 +129,7 @@ export default class Nav extends Vue {
     return retr;
 
   }
+
   public get sections(): string[] {
 
     return Array.from(this.sectionModel.keys());

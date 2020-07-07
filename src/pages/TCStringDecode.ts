@@ -1,4 +1,4 @@
-import DecodeInput from '../components/forms/DecodeInput.vue';
+import TCStringInput from '../components/forms/TCStringInput.vue';
 import OpenIssueLink from '../components/OpenIssueLink.vue';
 import {Component, Vue} from 'vue-property-decorator';
 import {
@@ -16,7 +16,7 @@ import {
 
 @Component({
   components: {
-    'decode-input': DecodeInput,
+    'tc-string-input': TCStringInput,
     'open-issue-link': OpenIssueLink,
 
   },
@@ -35,6 +35,7 @@ export default class TCStringDecode extends Vue {
     if (this.$route.query?.tcstring) {
 
       this.tcString = this.$route.query.tcstring as string;
+      this.tcModel = TCString.decode(this.tcString);
 
     }
 
@@ -42,15 +43,15 @@ export default class TCStringDecode extends Vue {
 
   private getClass(value: unknown): string {
 
-    let result = 'code-ish ';
+    let result = 'code-ish item-' + (typeof value);
 
     if (value instanceof Date) {
 
-      result += 'item-date';
+      result = 'code-ish item-date';
 
-    } else {
+    } else if (typeof value !== 'object') {
 
-      result += 'item-' + (typeof value);
+      result += ' single-decoded-value';
 
     }
 
@@ -101,21 +102,29 @@ export default class TCStringDecode extends Vue {
 
         } else if (value instanceof Vector) {
 
-          value.forEach((bool: boolean, id: number): void => {
+          if ( value.size === 0) {
 
-            if (bool) {
+            retr += '0';
 
-              retr += id;
+          } else {
 
-              if (id !== value.maxId) {
+            value.forEach((bool: boolean, id: number): void => {
 
-                retr += ', ';
+              if (bool) {
+
+                retr += id;
+
+                if (id !== value.maxId) {
+
+                  retr += ', ';
+
+                }
 
               }
 
-            }
+            });
 
-          });
+          }
 
         }
 
@@ -201,10 +210,26 @@ export default class TCStringDecode extends Vue {
         let curPosition = 0;
         const bitMap = new Map();
 
+        if (segKey !== Segment.CORE) {
+
+          curPosition = BitLength.segmentType;
+
+        }
+
         this.fieldSequence[this.tcModel.version.toString()][segKey].forEach((field: string): void => {
 
-          bitMap.set(field, decoded.substr(curPosition, BitLength[field]));
-          curPosition += BitLength[field];
+          if (BitLength[field]) {
+
+            bitMap.set(field, decoded.substr(curPosition, BitLength[field]));
+            curPosition += BitLength[field];
+
+          } else {
+
+            const bitLength = this.tcModel[field].bitLength;
+            bitMap.set(field, decoded.substr(curPosition, bitLength));
+            curPosition += bitLength;
+
+          }
 
         });
 

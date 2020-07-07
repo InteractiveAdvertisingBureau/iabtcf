@@ -5,12 +5,14 @@ import DateField from '../components/forms/DateField.vue';
 import {FormField} from '../components/forms/FormField';
 import FormSelect from '../components/forms/FormSelect.vue';
 import {
-  TCModel, GVL, Vendor, Purpose, Feature,
+  TCModel, GVL, Vendor, Purpose, Feature, TCString,
 } from '@iabtcf/core';
 import OpenIssueLink from '../components/OpenIssueLink.vue';
 import TCStringInput from '../components/forms/TCStringInput.vue';
 import TextField from '../components/forms/TextField.vue';
-import {Component, Vue} from 'vue-property-decorator';
+import {
+  Component, Vue, Watch,
+} from 'vue-property-decorator';
 
 @Component({
   components: {
@@ -26,6 +28,7 @@ import {Component, Vue} from 'vue-property-decorator';
 export default class extends Vue {
 
   private tcModel: TCModel = new TCModel();
+  private tcstring = '';
   private vendors_: FormField[] = [];
   private purposes_: FormField[] = [];
   private specialFeatures_: FormField[] = [];
@@ -56,6 +59,8 @@ export default class extends Vue {
   private isReady = false;
 
   private created(): void {
+
+    GVL.baseUrl = './vendorlist';
 
     this.tcModel.gvl = new GVL();
     this.listenForGVLChanges();
@@ -116,6 +121,17 @@ export default class extends Vue {
     if (selectedVersion) {
 
       this.listenForGVLChanges();
+
+    }
+
+  }
+
+  @Watch('tcModel')
+  private updateTCString(): void {
+
+    if (this.tcModel.gvl) {
+
+      this.tcstring = TCString.encode(this.tcModel);
 
     }
 

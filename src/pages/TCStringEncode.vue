@@ -7,11 +7,21 @@
     <template v-if="isReady">
       <form>
         <b-row>
-          <b-col cols="12">
+          <b-col>
             <tc-string-input
-              :tc-model="tcModel"
+              :tcstring="tcstring"
             />
-            <open-issue-link />
+          </b-col>
+          <b-col cols="1">
+            <router-link :to="{ path: 'decode', query: {tcstring:tcstring}}">
+              <a
+                :href="href"
+                class="decode-link"
+                @click="navigate"
+              >
+                Decode ⮀
+              </a>
+            </router-link>
           </b-col>
         </b-row>
         <b-row>

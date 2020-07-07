@@ -1,7 +1,8 @@
 import DocsHome from '../pages/DocsHome.vue';
 import Landing from '../pages/Landing.vue';
-import TCStringDecode from '../pages/TCStringDecode.vue';
+import TCStringPage from '../pages/TCStringPage.vue';
 import TCStringEncode from '../pages/TCStringEncode.vue';
+import TCStringDecode from '../pages/TCStringDecode.vue';
 import {LinkModel} from './LinkModel';
 import {RouteConfig} from 'vue-router';
 
@@ -11,10 +12,17 @@ class SectionModel extends Map {
 
     super();
 
-    const encoder: LinkModel = new LinkModel('Encode', TCStringEncode);
-    const decoder: LinkModel = new LinkModel('Decode', TCStringDecode);
+    const tcStringPage: LinkModel = new LinkModel('TC String', TCStringPage);
 
-    this.set('TCString', [encoder, decoder]);
+    this.set('TCString', [tcStringPage]);
+
+    const encode: LinkModel = new LinkModel('Encode', TCStringEncode);
+
+    this.set('Encode', [encode]);
+
+    const decode: LinkModel = new LinkModel('Decode', TCStringDecode);
+
+    this.set('Decode', [decode]);
 
     const docsHome: LinkModel = new LinkModel('Documentation', DocsHome);
 

@@ -3,8 +3,8 @@
     <b-row>
       <b-col>
         <form>
-          <decode-input
-            :tc-string.sync="tcString"
+          <tc-string-input
+            :tcstring="tcString"
           />
         </form>
         <open-issue-link />
@@ -40,40 +40,24 @@
           >
             <b-row>
               <b-col
-                cols="4"
-                class="item-key"
+                cols="6"
               >
-                {{ keyToTitle(item[0]) }}
+                <span
+                  class="item-key"
+                >
+                  {{ keyToTitle(item[0]) }}
+                </span>
+                <span
+                  class="bits"
+                >
+                  {{ item[1].length }} bit{{ isVector(tcModel[item[0]]) ? 's ' + getEncodingTypeLabel(item[1]) + ' encoded' : item[1].length === 1 ? '' : 's' }}: {{ item[1] }}
+                </span>
               </b-col>
               <b-col
-                cols="8"
+                cols="6"
                 :class="getClass(tcModel[item[0]])"
               >
                 {{ formatValue(tcModel[item[0]]) }}
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col
-                v-if="isVector(tcModel[item[0]])"
-                class="bits"
-              >
-                <span
-                  class="item-key"
-                >
-                  {{ item[1].length }} bits {{ getEncodingTypeLabel(item[1]) }} encoded:
-                </span>
-                {{ item[1] }}
-              </b-col>
-              <b-col
-                v-else
-                class="bits"
-              >
-                <span
-                  class="item-key"
-                >
-                  {{ item[1].length }} bit{{ item[1].length === 1 ? '' : 's' }}:
-                </span>
-                {{ item[1] }}
               </b-col>
             </b-row>
           </b-list-group-item>
