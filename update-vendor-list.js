@@ -36,6 +36,7 @@ async function updateGVLData(){
             console.log(`writing file vendor-list-v${counter}.json`);
             await downloadFile(`${latestVersionURL}/archives/vendor-list-v${counter}.json`, `./docs/vendorlist/archives/vendor-list-v${counter}.json`);  
         }
+        await downloadFile(`${latestVersionURL}/archives/vendor-list-v${latestVersion}.json`, `./docs/vendorlist/vendor-list.json`);  
    }
 }
 
