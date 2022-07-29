@@ -35,7 +35,7 @@ const routes: RouteConfig[] = sectionModel.getRouteConfig();
 
 const router = new VueRouter({routes});
 
-GVL.baseUrl = '/vendorlist';
+GVL.baseUrl = '/iabtcf/vendorlist';
 
 @Component({
   router,
