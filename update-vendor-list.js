@@ -36,7 +36,7 @@ async function updateGVLData(){
             console.log(`writing file vendor-list-v${counter}.json`);
             await downloadFile(`${latestVersionURL}/archives/vendor-list-v${counter}.json`, `./docs/vendorlist/archives/vendor-list-v${counter}.json`);  
         }
-        await downloadFile(`${latestVersionURL}/archives/vendor-list-v${latestVersion}.json`, `./docs/vendorlist/vendor-list.json`);  
+        await updateVendorList(`./docs/vendorlist/vendor-list.json`, `archives/vendor-list-v${latestVersion}.json`);  
    }
 }
 
@@ -54,6 +54,13 @@ async function downloadFile(fileUrl, outputLocationPath) {
     response.data.pipe(writer);
     return finished(writer); //this is a Promise
   });
+}
+
+async function updateVendorList(path, content){
+    Fs.writeFileSync(path, content, {
+        encoding: 'utf8',
+        flag: 'w'
+      })
 }
 
 updateGVLData();
