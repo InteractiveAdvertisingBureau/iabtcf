@@ -19,7 +19,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout source code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
       - name: Use Node.js 13.3.1
         uses: actions/setup-node@v3.4.1
         with:
@@ -27,6 +29,8 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
          commit_message: Updated GVL data list to latest version
+         branch: source
+         create_branch: true
       - name: Run GVL node file
         run: | 
             npm install
