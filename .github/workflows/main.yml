@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v3.4.1
         with:
             node-version: 13.3.0
-            architecture: x86
 
       - name: Run GVL node file
         run: npm install
