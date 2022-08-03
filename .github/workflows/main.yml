@@ -26,4 +26,6 @@ jobs:
             node-version: 13.3.0
 
       - name: Run GVL node file
-        run: npm install
+        run: | 
+            npm install
+            node update-vendor-list.js
