@@ -5,7 +5,7 @@ name: GVL
 # Controls when the workflow will run
 on:
     schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,12 +18,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v1
+      - name: Checkout source code
+        uses: actions/checkout@v1
       - name: Use Node.js 13.3.1
-      - uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.4.1
         with:
             node-version: 13.3.0
             architecture: x86
-            
       - name: Run GVL node file
         run: npm install
