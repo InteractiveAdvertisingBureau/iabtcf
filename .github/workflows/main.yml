@@ -42,8 +42,11 @@ jobs:
         with:
          commit_message: Updated GVL data list to latest version
          branch: GVL-UPDATE
+         status_options: '--untracked-files=no'
          add_options: '-u'
-         skip_dirty_check: true    
+         skip_dirty_check: true 
+         skip_fetch: true    
+         skip_checkout: true
          create_branch: true
          
       - name: "Run if changes have been detected"
