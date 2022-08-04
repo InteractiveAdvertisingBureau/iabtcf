@@ -6,7 +6,7 @@ name: GVLUPDATE
 on:
  # Runs on pushes targeting the default branch
   push:
-    branches: ["GVL-UPDATE-1"]
+    branches: ["GVL-UPDATE"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,13 +23,30 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout source code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
       - name: Use Node.js 13.3.1
         uses: actions/setup-node@v3.4.1
         with:
             node-version: 13.3.0
-
+     
       - name: Run GVL node file
         run: | 
             npm install
             node update-vendor-list.js
+            
+      - name: Updating code
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+         commit_message: Updated GVL data list to latest version
+         branch: GVL-UPDATE
+         create_branch: true
+         
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Files updated successfully!"
+
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        run: echo "No changes detected!"
