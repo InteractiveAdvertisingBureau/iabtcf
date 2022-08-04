@@ -58,10 +58,15 @@ async function downloadFile(fileUrl, outputLocationPath) {
 }
 
 async function updateVendorList(path, content){
-    Fs.writeFileSync(path, content, {
-        encoding: 'utf8',
-        flag: 'w'
-      })
+    Fs.writeFile(path, content, (err) => {
+        if (err)
+          console.log(err);
+        else {
+          console.log("File written successfully\n");
+          console.log("The written has the following contents:");
+          console.log(Fs.readFileSync(path, "utf8"));
+        }
+      });
 }
 
 updateGVLData();
