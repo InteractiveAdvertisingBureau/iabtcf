@@ -41,6 +41,7 @@ jobs:
         with:
          commit_message: Updated GVL data list to latest version
          branch: GVL-UPDATE
+         add_options: '-u'
          create_branch: true
          
       - name: "Run if changes have been detected"
