@@ -37,6 +37,7 @@ async function updateGVLData(){
             await downloadFile(`${latestVersionURL}/archives/vendor-list-v${counter}.json`, `./docs/vendorlist/archives/vendor-list-v${counter}.json`);  
         }
         console.log(`updating file vendor-list.json`);
+        await removeOldFile(`./docs/vendorlist/vendor-list.json`);
         await updateVendorList(`./docs/vendorlist/vendor-list.json`, `archives/vendor-list-v${latestVersion}.json`);  
    }
 }
@@ -57,11 +58,23 @@ async function downloadFile(fileUrl, outputLocationPath) {
   });
 }
 
+async function removeOldFile(path){
+  return Fs.unlink(path,function(err){
+    if(err) return console.log(err);
+    console.log('file deleted successfully');
+  });  
+}
+
 async function updateVendorList(path, content){
-    Fs.writeFileSync(path, content, {
-        encoding: 'utf8',
-        flag: 'w'
-      })
+    return Fs.writeFile(path, content, (err) => {
+        if (err)
+          console.log(err);
+        else {
+          console.log("File written successfully\n");
+          console.log("The written has the following contents:");
+          console.log(Fs.readFileSync(path, "utf8"));
+        }
+      });
 }
 
 updateGVLData();
