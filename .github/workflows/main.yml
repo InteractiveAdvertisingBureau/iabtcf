@@ -6,7 +6,7 @@ name: GVLUPDATE
 on:
  # Runs on pushes targeting the default branch
    schedule:
-    - cron: "*/0 11 * * 4"
+    - cron: "0 17 * * 4"
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
