@@ -33,15 +33,16 @@ jobs:
       - name: Run GVL node file
         run: | 
             npm i axios stream util fs
-            node update-vendor-list.js
+             node update-vendor-list.js
             git status
+            git pull origin master
+            git add .
             
       - name: Updating code
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
          commit_message: Updated GVL data list to latest version
-         branch: source
-         status_options: '--untracked-files=no'
+         branch: master
          add_options: '-u'
          skip_dirty_check: true 
          skip_fetch: true    
