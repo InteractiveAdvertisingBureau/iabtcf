@@ -33,9 +33,9 @@ jobs:
       - name: Run GVL node file
         run: | 
             npm i axios stream util fs
-             node update-vendor-list.js
+            node update-vendor-list.js
             git status
-            git pull origin master
+            git pull origin source
             git add .
             
       - name: Updating code
