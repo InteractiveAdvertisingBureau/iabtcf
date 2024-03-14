@@ -5,8 +5,10 @@ name: GVLUPDATE
 # Controls when the workflow will run
 on:
  # Runs on pushes targeting the default branch
-   schedule:
+  schedule:
     - cron: "0 17 * * 4"
+ # push:
+ #   branches: ["source"]
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,16 +32,17 @@ jobs:
      
       - name: Run GVL node file
         run: | 
-            npm install
+            npm i axios stream util fs
             node update-vendor-list.js
             git status
+            git pull origin source
+            git add .
             
       - name: Updating code
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
          commit_message: Updated GVL data list to latest version
-         branch: master
-         status_options: '--untracked-files=no'
+         branch: source
          add_options: '-u'
          skip_dirty_check: true 
          skip_fetch: true    
